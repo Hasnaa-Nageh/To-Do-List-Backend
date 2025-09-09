@@ -239,7 +239,7 @@ const refreshToken = async (req, res, next) => {
       secure: true,
       // sameSite: isProduction ? "strict" : "lax",
       sameSite: "none",
-      maxAge: 60 * 1000, // 1 minute
+      maxAge:15* 60 * 1000, // 1 minute
     });
 
     res.status(200).json({
