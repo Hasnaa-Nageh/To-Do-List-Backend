@@ -256,10 +256,18 @@ const refreshToken = async (req, res, next) => {
 
 const me = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password -__v");
+    const userId = req.user?.id;
+    const user = await User.findById(userId).select("-password -__v");
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    res.json(user);
+    res.json({
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
