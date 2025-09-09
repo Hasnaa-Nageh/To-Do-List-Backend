@@ -41,7 +41,7 @@ const signup = async (req, res, next) => {
       sameSite: "none",
     };
 
-    res.cookie("accessToken", accessToken, {
+    res.cookie("accessToken1", accessToken, {
       ...cookieOptions,
       maxAge: 60 * 1000,
     });
@@ -102,7 +102,7 @@ const login = async (req, res, next) => {
       // sameSite: isProduction ? "strict" : "lax",
     };
 
-    res.cookie("accessToken", accessToken, {
+    res.cookie("accessToken1", accessToken, {
       ...cookieOptions,
       maxAge:15* 60 * 1000, // 1 minute
     });
@@ -234,7 +234,7 @@ const refreshToken = async (req, res, next) => {
 
     // Set the new access token as a cookie
     const isProduction = process.env.NODE_ENV === "production";
-    res.cookie("accessToken", newAccessToken, {
+    res.cookie("accessToken1", newAccessToken, {
       httpOnly: true,
       secure: false,
       // sameSite: isProduction ? "strict" : "lax",
