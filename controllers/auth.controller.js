@@ -37,7 +37,8 @@ const signup = async (req, res, next) => {
     const cookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: isProduction ? "strict" : "lax",
+      // sameSite: isProduction ? "strict" : "lax",
+      sameSite: "none",
     };
 
     res.cookie("accessToken", accessToken, {
@@ -97,7 +98,8 @@ const login = async (req, res, next) => {
     const cookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: isProduction ? "strict" : "lax",
+      sameSite: "none",
+      // sameSite: isProduction ? "strict" : "lax",
     };
 
     res.cookie("accessToken", accessToken, {
@@ -140,7 +142,8 @@ const logOut = async (req, res, next) => {
     const cookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: isProduction ? "strict" : "lax",
+      // sameSite: isProduction ? "strict" : "lax",
+      sameSite: "none",
     };
     res.clearCookie("accessToken", cookieOptions);
     res.clearCookie("refreshToken", cookieOptions);
@@ -234,7 +237,8 @@ const refreshToken = async (req, res, next) => {
     res.cookie("accessToken", newAccessToken, {
       httpOnly: true,
       secure: true,
-      sameSite: isProduction ? "strict" : "lax",
+      // sameSite: isProduction ? "strict" : "lax",
+      sameSite: "none",
       maxAge: 60 * 1000, // 1 minute
     });
 
