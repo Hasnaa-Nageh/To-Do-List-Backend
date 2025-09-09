@@ -104,7 +104,7 @@ const login = async (req, res, next) => {
 
     res.cookie("accessToken", accessToken, {
       ...cookieOptions,
-      maxAge: 60 * 1000, // 1 minute
+      maxAge:15* 60 * 1000, // 1 minute
     });
 
     res.cookie("refreshToken", refreshToken, {
