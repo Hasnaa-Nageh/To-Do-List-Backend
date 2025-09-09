@@ -36,7 +36,7 @@ const signup = async (req, res, next) => {
     const isProduction = process.env.NODE_ENV === "production";
     const cookieOptions = {
       httpOnly: true,
-      secure: true,
+      secure: false,
       // sameSite: isProduction ? "strict" : "lax",
       sameSite: "none",
     };
@@ -97,7 +97,7 @@ const login = async (req, res, next) => {
     const isProduction = process.env.NODE_ENV === "production";
     const cookieOptions = {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "none",
       // sameSite: isProduction ? "strict" : "lax",
     };
@@ -141,7 +141,7 @@ const logOut = async (req, res, next) => {
     const isProduction = process.env.NODE_ENV === "production";
     const cookieOptions = {
       httpOnly: true,
-      secure: true,
+      secure: false,
       // sameSite: isProduction ? "strict" : "lax",
       sameSite: "none",
     };
@@ -236,7 +236,7 @@ const refreshToken = async (req, res, next) => {
     const isProduction = process.env.NODE_ENV === "production";
     res.cookie("accessToken", newAccessToken, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       // sameSite: isProduction ? "strict" : "lax",
       sameSite: "none",
       maxAge:15* 60 * 1000, // 1 minute
